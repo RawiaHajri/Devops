@@ -22,8 +22,17 @@ pipeline {
         stage ("image build") {
             steps {
                 echo 'building docker image'
-                sh "docker build -t 2alinfo7/position-simulator:${commit_id} ."
+                sh "docker build -t position-simulator:${commit_id} ."
                 echo 'docker image built'
+            }
+        }
+        
+        stage ("deployment") {
+            steps {
+                echo 'deploy'
+                sh "kubectl apply -f workloads.yaml"
+                sh "kubectl apply -f services.yaml"
+                echo 'deploy complete' 
             }
         }
     }
