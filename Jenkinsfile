@@ -23,7 +23,7 @@ pipeline {
             steps {
                 echo 'building docker image'
                 sh "docker build -t rawiahajri/position-simulator:${commit_id} ."
-		sh "docker push rawiahajri/position-simulator:${commit_id}
+		sh "docker push rawiahajri/position-simulator:${commit_id}"
                 echo 'docker image built'
             }
         }
