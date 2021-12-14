@@ -27,12 +27,11 @@ pipeline {
             }
         }
         
-        stage ("deployment") {
-            steps {
-                echo 'deploy'
-                sh "kubectl apply -f workloads.yaml"
-                sh "kubectl apply -f services.yaml"
-                echo 'deploy complete' 
+        	
+        stage('deploy') {
+	          steps {
+	             sh "sed -i -r 's|richardchesterwood/k8s-fleetman-position-simulator:release2|RawiaHajri/position-simulator:${commit_id}|' workloads.yaml"
+	             sh "kubectl apply -f workloads.yaml"
             }
         }
     }
