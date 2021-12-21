@@ -35,8 +35,8 @@ pipeline {
         stage ("image build") {
             steps {
                 echo 'building docker image'
-                sh "docker build -t rawiahajri/position-simulator:${commit_id} ."
-		sh "docker push rawiahajri/position-simulator:${commit_id}"
+                sh "docker build -t 192.168.147.128:8082/position-simulator:${commit_id} ."
+		sh "docker push 192.168.147.128:8082/position-simulator:${commit_id}"
                 echo 'docker image built'
             }
         }
