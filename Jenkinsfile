@@ -33,7 +33,7 @@ pipeline {
         	
         stage('deploy') {
 	          steps {
-	             sh "sed -i -r 's|richardchesterwood/k8s-fleetman-position-simulator:release2|rawiahajri/position-simulator:${commit_id}|' workloads.yaml"
+	             sh "sed -i -r 's|richardchesterwood/k8s-fleetman-position-simulator:release2|192.168.147.128:8082/position-simulator:${commit_id}|' workloads.yaml"
 	             sh "kubectl apply -f workloads.yaml"
             }
         }
