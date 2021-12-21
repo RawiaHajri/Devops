@@ -12,17 +12,6 @@ pipeline {
             }
         }
 	    
-	 stage ('code quality') {
-            steps {
-                echo 'testing code quality'
-                sh "mvn clean verify sonar:sonar \
-                    -Dsonar.projectKey=position-similator \
-                    -Dsonar.host.url=http://localhost:9000 \
-                    -Dsonar.login=fa195595f77e1e28e39372864440d1f1fa82be0a"
-                echo 'code quality test complete'
-            }
-        }
-	    
 	    
         stage ('build') {
             steps {
